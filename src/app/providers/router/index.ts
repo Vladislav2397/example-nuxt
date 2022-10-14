@@ -11,8 +11,8 @@ export function createRouter() {
         routes: [
             {
                 path: '/',
-                component: Index
-            }
-        ]
+                component: Index,
+            },
+        ],
     })
 }

@@ -2,13 +2,21 @@
 
 .b-index
     h1 IndexPage
+    button-component(
+        ariaLabel="Submit"
+    ) Submit
 
 </template>
 
 <script lang="ts">
-import {Component, Vue} from 'nuxt-property-decorator'
+import { Component, Vue } from 'nuxt-property-decorator'
+import { Button } from '~/shared/ui/Button'
 
-@Component
+@Component({
+    components: {
+        'button-component': Button,
+    },
+})
 export default class IndexPage extends Vue {
     //
 }

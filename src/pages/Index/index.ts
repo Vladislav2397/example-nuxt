@@ -1,5 +1,3 @@
 import Index from './Index.vue'
 
-export {
-    Index,
-}
+export { Index }

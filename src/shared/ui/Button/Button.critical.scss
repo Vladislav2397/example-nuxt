@@ -1,0 +1,123 @@
+.button {
+    $b: &;
+
+    &.is-only-icon {
+        padding: 0;
+    }
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-weight: 700;
+    box-sizing: border-box;
+    white-space: nowrap;
+
+    &__content {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+    }
+
+    &--view {
+        &-brand {
+            font-weight: 500;
+            color: var(--controlSecondaryBrandText);
+            background-color: var(--controlBrandBackground);
+        }
+
+        &-outline {
+            color: var(--controlBrandText);
+            background-color: var(--controlSecondaryBackground);
+            border: 2px solid var(--controlOutlineBrandBorder);
+        }
+
+        &-secondary-brand {
+            color: var(--controlBrandText);
+            background-color: var(--controlSecondaryBackground);
+        }
+
+        &-secondary-outline {
+            color: var(--controlBrandText);
+            background-color: var(--controlSecondaryBackground);
+            border: 2px solid var(--controlOutlineSecondaryBorder);
+        }
+    }
+
+    &--icon {
+        &-right {
+            #{$b}__slot + #{$b}__icon {
+                margin-left: toRem(6);
+            }
+        }
+
+        &-left {
+            #{$b}__content {
+                flex-direction: row-reverse;
+            }
+
+            #{$b}__slot + #{$b}__icon {
+                margin-right: toRem(6);
+            }
+        }
+    }
+
+    &--size {
+        &-l,
+        &-m {
+            @include fontSize(p1);
+
+            padding: 0 toRem(30);
+        }
+
+        &-l {
+            height: toRem(60);
+            min-width: toRem(60);
+            border-radius: $borderRadiusM;
+
+            #{$b}__icon {
+                font-size: toRem(20);
+            }
+
+            #{$b}__spinner {
+                width: toRem(20);
+                height: toRem(20);
+            }
+        }
+
+        &-m {
+            height: toRem(54);
+            min-width: toRem(54);
+            border-radius: $borderRadiusXS;
+
+            #{$b}__icon {
+                font-size: toRem(18);
+            }
+
+            #{$b}__spinner {
+                width: toRem(18);
+                height: toRem(18);
+            }
+        }
+
+        &-s {
+            height: toRem(44);
+            padding: 0 toRem(24);
+            min-width: toRem(44);
+            border-radius: $borderRadiusXS;
+
+            @include fontSize(p2);
+
+            #{$b}__icon {
+                font-size: toRem(16);
+            }
+
+            #{$b}__spinner {
+                width: toRem(16);
+                height: toRem(16);
+            }
+        }
+    }
+}
