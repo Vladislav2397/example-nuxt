@@ -45,9 +45,6 @@ export default class Button extends Vue {
         /**/
     }
 
-    timeout = {} as ReturnType<typeof setTimeout>
-    timeoutDelay = 300
-
     get attrs(): Record<string, unknown> {
         return {
             ...(this.tag === 'button' && {
@@ -95,3 +92,6 @@ export default class Button extends Vue {
     }
 }
 </script>
+
+<!--<style lang="scss" src="./Button.critical.scss"></style>-->
+<!--<style lang="scss" src="./Button.main.scss"></style>-->

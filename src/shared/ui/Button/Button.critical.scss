@@ -1,3 +1,10 @@
+@function toRem($px) {
+    @return $px / 12 * 1rem
+}
+
+$borderRadiusM: toRem(8);
+$borderRadiusXS: toRem(4);
+
 .button {
     $b: &;
 
@@ -67,7 +74,7 @@
     &--size {
         &-l,
         &-m {
-            @include fontSize(p1);
+            //@include fontSize(p1);
 
             padding: 0 toRem(30);
         }
@@ -108,7 +115,7 @@
             min-width: toRem(44);
             border-radius: $borderRadiusXS;
 
-            @include fontSize(p2);
+            //@include fontSize(p2);
 
             #{$b}__icon {
                 font-size: toRem(16);
