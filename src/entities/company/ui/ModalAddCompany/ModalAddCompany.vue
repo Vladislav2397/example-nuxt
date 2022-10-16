@@ -19,8 +19,9 @@
 </template>
 
 <script lang="ts">
-import {Component, Vue} from 'nuxt-property-decorator'
-import { mapFields } from 'vuex-map-fields'
+import { Component, Vue } from 'nuxt-property-decorator'
+
+import { Field } from '~/shared/lib/decorators'
 
 import { CompanyGeneralCollection } from '../CompanyGeneralCollection'
 import { CompanyPaymentCollection } from '../CompanyPaymentCollection'
@@ -31,20 +32,18 @@ import { companyModel } from '~/entities/company'
     components: {
         CompanyHeadCollection,
         CompanyPaymentCollection,
-        CompanyGeneralCollection
+        CompanyGeneralCollection,
     },
-    computed: {
-        ...mapFields('company', {
-            company: 'active',
-            payment: 'active.payment',
-            head: 'active.head',
-        }),
-    }
 })
 export default class ModalAddCompany extends Vue {
-    declare company: companyModel.CompanyModel['active']
-    declare payment: companyModel.CompanyModel['active']['payment']
-    declare head: companyModel.CompanyModel['active']['head']
+    @Field('company', 'active')
+    public company!: companyModel.CompanyModel['active']
+
+    @Field('company', 'active.payment')
+    public payment!: companyModel.CompanyModel['active']['payment']
+
+    @Field('company', 'active.head')
+    public head!: companyModel.CompanyModel['active']['head']
 
     get isIP() {
         return this.company.general.type === 1
