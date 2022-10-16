@@ -4,6 +4,7 @@ export default {
     srcDir: 'src',
     dir: {
         static: '../public',
+        store: 'app/providers/store'
     },
 
     // Global page headers: https://go.nuxtjs.dev/config-head
@@ -35,6 +36,7 @@ export default {
     modules: [
         // https://go.nuxtjs.dev/pwa
         '@nuxtjs/pwa',
+        '@nuxtjs/style-resources',
     ],
 
     // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -45,5 +47,30 @@ export default {
     },
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
-    build: {},
+    build: {
+        extend(config) {
+            config.module.rules.push({
+                test: /\.pug$/,
+                oneOf: [
+                    {
+                        resourceQuery: /^\?vue/,
+                        use: [
+                            {
+                                loader: 'pug-bem-plain-loader',
+                                options: {
+                                    b: true, // default 'b-'
+                                    e: '__',
+                                    m: '--'
+                                }
+                            }
+                        ]
+                    },
+
+                    {
+                        use: ['raw-loader', 'pug-bem-plain-loader']
+                    }
+                ]
+            })
+        }
+    },
 }
